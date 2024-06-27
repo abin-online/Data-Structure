@@ -8,4 +8,4 @@ function linearSearch(arr, target){
     }
 }
 
-console.log(linearSearch(arr, 2))
+console.log(linearSearch(arr,67 ))
