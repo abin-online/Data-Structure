@@ -9,4 +9,4 @@ class Node{
 
 const newLinkedList = new Node(10)
 
-console.log(newLinkedList.value)
+console.log(newLinkedList)
