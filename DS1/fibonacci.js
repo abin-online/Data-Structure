@@ -9,3 +9,4 @@ function fibonacci(n){
 console.log(fibonacci(2))
 console.log(fibonacci(5))
 console.log(fibonacci(7))
+console.log(fibonacci(6))
