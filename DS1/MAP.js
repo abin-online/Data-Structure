@@ -1,0 +1,1 @@
+// const map = new map([['a':3j]])
