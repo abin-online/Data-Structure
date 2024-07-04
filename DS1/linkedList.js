@@ -114,6 +114,39 @@ class linkedList{
             return null
         }
     }
+
+    search(value){
+        if(this.isEmpty()){
+            return -1
+        }else{
+            let i = 0;
+            let curr = this.head
+
+            while(curr){
+                
+                if(curr.value == value){
+                    return i 
+                }
+                i++;
+                curr = curr.next;
+            }
+            return -1
+        }
+    }
+
+    reverse(){
+        let prev = null;
+        let curr = this.head;
+        let next;
+        while(curr){
+            next = curr.next
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+            
+        }
+        this.head = prev
+    }
 }
 
 
@@ -136,9 +169,16 @@ list.insert(10,0)
 list.insert(20,0)
 list.insert(30,0)
 list.print()
+list.reverse()
+list.print()
+
 // list.removeFrom(1)
+
+
 // list.print()
 
-list.removeValue(20)
-list.print()
+// list.removeValue(20)
+
+// console.log(list.search(30))
+// list.print()
 // console.log(list)
