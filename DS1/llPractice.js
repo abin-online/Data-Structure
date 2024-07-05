@@ -107,6 +107,46 @@ class linkedList{
   
     }
 
+    removeValue(value){
+        
+        if(this.isEmpty()){
+            return null
+        }else if(this.head.value == value){
+            this.head = this.head.next
+            this.size--
+        }else{
+            let prev = this.head
+            while(prev.next && prev.next.value!= value){
+                prev = prev.next
+            }
+            if(prev.next){
+                let removeNode = prev.next
+                prev.next = removeNode.next
+                this.size--
+            }
+            return null
+        }
+        
+    }
+
+    removeFrom(index){
+        if(this.isEmpty()){
+            return null
+        }else if(index === 0){
+            this.head = this.head.next
+            this.size--
+        }else{
+            prev = this.head
+            for(let i = 0 ; i < index - 1 ; i++){
+                prev = prev.next
+            }
+            let removeNode = prev.next;
+            prev.next = removeNode.next
+            this.size--
+        }
+        return null
+    }
+
 
 }
 
@@ -117,4 +157,7 @@ list.append(7)
 list.prepend(2)
 list.reverse()
 list.print()
-console.log(list.search(5))
+list.removeValue(5)
+list.removeFrom(0)
+list.print()
+// console.log(list.search(5))

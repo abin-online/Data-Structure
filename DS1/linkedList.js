@@ -147,6 +147,8 @@ class linkedList{
         }
         this.head = prev
     }
+
+    
 }
 
 
