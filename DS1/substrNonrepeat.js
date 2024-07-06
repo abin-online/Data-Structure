@@ -1,4 +1,4 @@
-let str = "abcabde";
+let str = "abcaabde";
 
 function substrNonrepeat(str) {
     let ltr = '';
