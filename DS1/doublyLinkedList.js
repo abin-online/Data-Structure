@@ -68,8 +68,9 @@ class doublyLinkedList{
             this.head = node
             this.tail = node
         }else{
-            node.prev = this.tail
+            
             this.tail.next = node
+            node.prev = this.tail
             this.tail = node
         }
     }
@@ -109,6 +110,7 @@ list.prepend(60)
 list.append(70)
 list.removeFromFront()
 list.removeFromEnd()
+list.append(700)
 list.print()
 // list.reverse()
 
