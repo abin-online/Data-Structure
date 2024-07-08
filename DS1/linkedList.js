@@ -61,7 +61,7 @@ class linkedList{
     }
 
     insert(value , index){
-        if(index<0 || index>this.size){
+        if(index<0 || index>=this.size){
             console.log("NO")
         }
         else if(index === 0){
