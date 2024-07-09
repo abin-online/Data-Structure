@@ -22,5 +22,5 @@ function fibonacci(n) {
     return fib
 }
 
-console.log(fibonacci(7));
+console.log(Array(...fibonacci(5)));
 
