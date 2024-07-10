@@ -189,16 +189,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 class Node{
     constructor(value){
         this.value = value
@@ -330,6 +320,22 @@ class linkedList{
             this.size++
         }
         
+    }
+
+    removeDuplicate(){
+        if(this.isEmpty()){
+            return null
+        }
+
+        let curr = this.head
+        while(curr && curr.next){
+            if(curr.value === curr.next.value){
+                curr.next = curr.next.next
+                this.size--
+            }else{
+                curr = curr.next
+            }
+        }
     }
 }
 
