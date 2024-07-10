@@ -1,5 +1,5 @@
 let str = "silent";
-let str1 = "lister";
+let str1 = "listen";
 
 // console.log(str.split("").sort().join("") == str1.split("").sort().join(""))
 
