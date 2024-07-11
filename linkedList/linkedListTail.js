@@ -88,7 +88,7 @@ class linkedList{
 
     arrayToList(arr){  //array to linked list
         for(let i = 0 ; i < arr.length ; i++){
-            list.append(arr[i])
+            this.append(arr[i])
         }
     }
 
