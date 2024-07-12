@@ -10,6 +10,7 @@ function substrNonrepeat(str) {
             ltr += str[i];
             if (ltr.length > len) {
                 len = ltr.length;
+                
                 word = ltr;
             }
         } else {
