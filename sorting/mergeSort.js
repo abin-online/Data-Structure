@@ -1,8 +1,9 @@
 let arr = [4,7,1,3,9,-3,7]
 
 
+
 function mergeSort(arr){
-    if(arr.length < 2){
+    if(arr.length < 2) {
         return arr
     }
     let middle = Math.floor(arr.length/2)
@@ -22,5 +23,6 @@ function merge(left , right){
     }
     return [...sorted , ...left , ...right]
 }
+
 
 console.log(mergeSort(arr));
