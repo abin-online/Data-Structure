@@ -33,7 +33,7 @@ class Queue{
     }
 }
 
-let Que = new Queue()
+let Que = new Queue() 
 
 console.log(Que.isEmpty());
 
