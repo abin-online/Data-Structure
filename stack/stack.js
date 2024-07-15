@@ -27,15 +27,23 @@ class stack{
         return str
     }
 
+    peek(){
+        if(this.isEmpty()){
+            return "EMPTY STACK"
+        }
+        return this.items[this.items.length - 1]
+    }
+
 }
 
 let Stack = new stack()
 
 Stack.push(20)
-Stack.push(20)
-Stack.push(20)
-Stack.push(20)
+Stack.push(30)
+Stack.push(40)
+Stack.push(50)
 Stack.pop()
-console.log(Stack.printStack());
+console.log(Stack.peek());
+//console.log(Stack.printStack());
 
 
