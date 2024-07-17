@@ -1,5 +1,5 @@
 const arr = [4, -9, 3, 1, 12. - 5]
-
+const arr1 = [3,48,-2,-76,98,2]
 function  bubbleSort(arr){
     let n = arr.length
     for(let i = 0 ; i < n ; i++){
@@ -14,4 +14,4 @@ function  bubbleSort(arr){
     return arr
 }
 
-console.log(bubbleSort(arr))
+console.log(bubbleSort(arr1))
