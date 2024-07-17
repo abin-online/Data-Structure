@@ -41,7 +41,7 @@ let table = new hashTable(5)
 
 table.set("name" , "abin")
 console.log(table.get("name")); //abin
-table.set("mane" ,"kerala") //conflict occurs
+table.set("mane" ,"kerala") //collision occurs
 console.log("after //conflict occurs");
 console.log(table.get("name")); //kerala
 table.display()
