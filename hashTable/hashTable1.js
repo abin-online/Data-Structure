@@ -40,5 +40,10 @@ class hashTable{
 let table = new hashTable(5)
 
 table.set("name" , "abin")
-console.log(table.get("name"));
+console.log(table.get("name")); //abin
+table.set("mane" ,"kerala") //conflict occurs
+console.log("after //conflict occurs");
+console.log(table.get("name")); //kerala
 table.display()
+
+//bcz hash values of name and mane are same, therefore it overwrites
