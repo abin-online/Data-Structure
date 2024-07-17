@@ -17,8 +17,6 @@ class hashTable {
         this.table[index] = value
     }
 
-
-
     get(key){
         const index = this.hash(key)
         return this.table[index]
