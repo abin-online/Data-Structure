@@ -66,6 +66,6 @@ let circle = new circularQueue(5)
 circle.enqueue(79)
 circle.enqueue(56)
 circle.enqueue(98)
-circle.dequeue()
+//circle.dequeue()
 console.log(circle);
 circle.printQueue()
