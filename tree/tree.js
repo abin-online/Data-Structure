@@ -1,23 +1,66 @@
-// const obj = {
-//     name: "nithina",
-//     loction:{
-//         city:"Chennai"
-//     }
-// }
+class Node{
+    constructor(value){
+        this.value = value
+        this.left = null
+        this.right = null
+    }
+}
 
+class BinarySearchTree{
+    constructor(){
+        this.root = null
+    }
 
-// console.log(obj.hasOwnProperty("name"))
+    isEmpty(){
+        return this.root === null
+    }
 
-// console.log(obj.loction.pin?.code);
+    insert(value){
+        const node = new Node(value)
+        if(this.isEmpty()){
+            this.root = node
+        }else{
+            this.insertNode(this.root , node)
+        }
+    }
 
-let arr = [1,2,3,4,5]
+    insertNode(root , node){
+        if(node.value < root.value){
+            if(root.left === null){
+                root.left = node
+            }else{
+                this.insertNode(root.left , node)
+            }
+        }else{
+            if(root.right === null){
+                root.right = node
+            }else{
+                this.insertNode(root.right , node)
+            }
+        }
+    }
 
-const [one,two,...rest] = arr
+    search(root, value){
+        if(!root){
+            return false
+        }else{
+            if(root.value === value){
+                return true
+            }else if(value < root.value){
+                return this.search(root.left , value)
+            }else{
+                return this.search(root.right , value)
+            }
+        }
+    }
+}
 
-console.log(one);
-console.log(two);
-console.log(rest);
+const bst = new BinarySearchTree()
+console.log("is empty ?:",bst.isEmpty());
 
-let arr2 = [...arr,6,7]
+bst.insert(5)
+bst.insert(15)
+bst.insert(10)
+console.log("found ?",bst.search(bst.root, 15));
 
-console.log(arr2);
+console.log(bst);
