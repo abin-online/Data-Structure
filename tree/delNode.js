@@ -92,4 +92,31 @@ class BinarySearchTree{
             }
         }
     }
+
+    max(root){
+        if(!root.right){
+            return root.value
+        }else{
+            return this.max(root.right)
+        }
+    }
+
+    delete(value){
+        this.root = this.deleteNode(this.root, value)
+    }
+
+    deleteNode(root , value){
+        if(root === null){
+            return root
+        }
+        if(value < root.value){
+            root.left = this.deleteNode(root.left , value)
+        }else if(value > root.value){
+            root.right = this.deleteNode(root.right , value)
+        }else{
+            if(!root.left && !root.right){
+                
+            }
+        }
+    }
 }

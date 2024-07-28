@@ -46,6 +46,5 @@ table.set("age" , 25)
 
 //console.log(table.get("age"));
 
-table.remove("name")
-
+table.remove('name')
 table.display()
