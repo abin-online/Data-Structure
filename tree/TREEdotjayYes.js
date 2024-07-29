@@ -12,11 +12,11 @@ class BinarySearchTree {
     }
 
     isEmpty() {
-        return this.root === null
+        return this.root == null
     }
 
     insert(value) {
-        const node = new Node(value)
+        const node = new node(value)
         if (this.isEmpty()) {
             this.root = node
         } else {
@@ -25,14 +25,14 @@ class BinarySearchTree {
     }
 
     insertNode(root, node) {
-        if (node.value < root.value) {
+        if (root.value < node.value) {
             if (root.left === null) {
                 root.left = node
             } else {
                 this.insertNode(root.left, node)
             }
         } else {
-            if (root.right === null) {
+            if (root.right) {
                 root.right = node
             } else {
                 this.insertNode(root.right, node)
@@ -40,23 +40,9 @@ class BinarySearchTree {
         }
     }
 
-    search(root, value) {
-        if (!root) {
-            return false
-        } else {
-            if (root.value === value) {
-                return true
-            } else if (root.value > value) {
-                this.search(root.left, value)
-            } else {
-                this.search(root.right, value)
-            }
-        }
-    }
-
     preOrder(root) {
         if (root) {
-            console.log(root);
+            console.log(root.value);
             this.preOrder(root.left)
             this.preOrder(root.right)
         }
@@ -65,7 +51,7 @@ class BinarySearchTree {
     inOrder(root) {
         if (root) {
             this.inOrder(root.left)
-            console.log(root);
+            console.log(root.value);
             this.inOrder(root.right)
         }
     }
@@ -74,22 +60,30 @@ class BinarySearchTree {
         if (root) {
             this.postOrder(root.left)
             this.postOrder(root.right)
-            console.log(root);
+            console.log(root.value);
         }
     }
 
-    levelOrder(root) {
+    levelOrder() {
         const queue = []
         queue.push(this.root)
         while (queue.length) {
             let curr = queue.shift()
             console.log(curr.value);
-            if (curr.left) {
+            if (curr.value) {
                 queue.push(curr.left)
             }
-            if (curr.right) {
+            if (curr.value) {
                 queue.push(curr.right)
             }
+        }
+    }
+
+    min(root) {
+        if (!root.left) {
+            return root.value
+        } else {
+            this.min(root.left)
         }
     }
 
@@ -101,25 +95,17 @@ class BinarySearchTree {
         }
     }
 
-    min(root) {
-        if (!root.left) {
-            return root.value
-        } else {
-            return this.min(root.left)
-        }
-    }
-
     delete(value) {
         this.root = this.deleteNode(this.root, value)
     }
-
     deleteNode(root, value) {
-        if (root === null) {
+        if (root == null) {
             return root
         }
         if (value < root.value) {
             root.left = this.deleteNode(root.left, value)
-        } else if (value > root.value) {
+        }
+        else if (value > root.value) {
             root.right = this.deleteNode(root.right, value)
         } else {
             if (!root.left && !root.right) {
@@ -134,45 +120,7 @@ class BinarySearchTree {
 
             root.value = this.min(root.right)
             root.right = this.deleteNode(root.right, value)
-        }
-        return root
-    }
 
-    findClosest(target) {
-        return this.findClosestValue(this.root, target, this.root.value)
-    }
-
-    findClosestValue(node, target, closest) {
-        if (node === null) {
-            return closest
-        }
-
-        if (Math.abs(target - closest) > Math.abs(target - node.value)) {
-            closest = node.value
-        }
-
-        if (target < node.value) {
-            return this.findClosestValue(node.left, target, closest)
-        } else if (target > node.value) {
-            return this.findClosestValue(node.right, target, closest)
-        } else {
-            return closest
         }
     }
 }
-
-const bst = new BinarySearchTree()
-
-bst.insert(10)
-bst.insert(5)
-bst.insert(15)
-bst.insert(3)
-bst.insert(7)
-
-bst.levelOrder()
-
-bst.delete(10)
-console.log("after removal of 10");
-bst.levelOrder()
-
-console.log(`${bst.findClosest(6)} is closest to 6`);
