@@ -1,0 +1,31 @@
+delete(value) {
+    this.root = this.deleteNode(this.root, value);
+}
+
+deleteNode(root, value) {
+    if (root === null) {
+        return root;
+    }
+
+    if (value < root.value) {
+        root.left = this.deleteNode(root.left, value);
+    } else if (value > root.value) {
+        root.right = this.deleteNode(root.right, value);
+    } else {
+        // Node with only one child or no child
+        if (!root.left) {
+            return root.right;
+        } else if (!root.right) {
+            return root.left;
+        }
+
+        // Node with two children
+        // Get the inorder successor (smallest value in the right subtree) and replace current node value
+        root.value = this.min(root.right);
+
+        // Delete the inorder successor
+        root.right = this.deleteNode(root.right, root.value);
+    }
+
+    return root;
+}

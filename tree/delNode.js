@@ -123,17 +123,15 @@ class BinarySearchTree {
             root.right = this.deleteNode(root.right, value)
         } else {
             if (!root.left && !root.right) {
-                return null
+                return null;
             }
-
             if (!root.left) {
                 return root.right
             } else if (!root.right) {
                 return root.left
             }
-
             root.value = this.min(root.right)
-            root.right = this.deleteNode(root.right, value)
+            root.right = this.deleteNode(root.right, root.value)
         }
         return root
     }
@@ -159,6 +157,22 @@ class BinarySearchTree {
             return closest
         }
     }
+
+    isBST(){
+        return this.validateBST(this.root , -Infinity , Infinity)
+    }
+
+    validateBST(node , min , max){
+        if(node == null){
+            return true
+        }
+
+        if(node.value <= min || node.value >= max){
+            return false
+        }
+
+        return this.validateBST(node.left , min , node.value) && this.validateBST(node.right , node.value , max)
+    }
 }
 
 const bst = new BinarySearchTree()
@@ -176,3 +190,5 @@ console.log("after removal of 10");
 bst.levelOrder()
 
 console.log(`${bst.findClosest(6)} is closest to 6`);
+
+console.log(`Is a BST ? ${bst.isBST()}`);
