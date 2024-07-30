@@ -191,4 +191,5 @@ console.log("removal after 2");
 bst.levelOrder()
 
 
-console.log(bst.isBST(bst.root));
+console.log(bst.isBST(bst.root)
+);
