@@ -24,7 +24,7 @@ class maxHeap{
         let parentIndex = this.getParentIndex(index)
         while(index > 0 && this.heap[parentIndex] < this.heap[index]){
             [this.heap[index] , this.heap[parentIndex]] = [this.heap[parentIndex] , this.heap[index]]
-            
+
         }
     }
-}
+}f
