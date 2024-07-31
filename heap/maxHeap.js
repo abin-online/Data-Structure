@@ -45,8 +45,8 @@ class maxHeap{
 
   heapifyDown(index){
     let largest = index
-    leftChildIndex = this.getLeftChildIndex(index)
-    rightChildIndex  = this.getRightChildIndex(index)
+    let leftChildIndex = this.getLeftChildIndex(index)
+    let rightChildIndex  = this.getRightChildIndex(index)
 
     if(largest < this.heap.length && this.heap[leftChildIndex] > this.heap[index] ){
         largest = leftChildIndex
@@ -62,9 +62,41 @@ class maxHeap{
     }
   }
 
-  getMin(){
+  getMax(){
     return this.heap[0]
+  }
+
+  print(){
+    console.log(this.heap.join(" "));
   }
 
 
 }
+
+// const maximumHeap = new maxHeap()
+
+// maximumHeap.insert(34)
+// maximumHeap.insert(44)
+// maximumHeap.insert(54)
+// maximumHeap.insert(64)
+// maximumHeap.insert(94)
+
+// console.log(maximumHeap.getMax()," is maximum");
+// console.log(maximumHeap.remove()," removed");
+// console.log(maximumHeap.getMax()," is maximum");
+// maximumHeap.print()
+
+function heapSort(array) {
+    const maxiHeap = new maxHeap(array)
+    let arr = []
+    for(let i = 0 ; i < array.length ; i++){
+        maxiHeap.insert(array[i])
+        arr = maxiHeap.remove()
+    }
+    return arr
+    
+}
+
+const array = [3,5,7,89,2,45]
+
+console.log(heapSort(array));
