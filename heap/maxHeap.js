@@ -48,11 +48,11 @@ class maxHeap{
     let leftChildIndex = this.getLeftChildIndex(index)
     let rightChildIndex  = this.getRightChildIndex(index)
 
-    if(largest < this.heap.length && this.heap[leftChildIndex] > this.heap[index] ){
+    if(largest < this.heap.length && this.heap[leftChildIndex] > this.heap[largest] ){
         largest = leftChildIndex
     }
 
-    if(largest < this.heap.length && this.heap[rightChildIndex] > this.heap[index]){
+    if(largest < this.heap.length && this.heap[rightChildIndex] > this.heap[largest]){
         largest = rightChildIndex
     }
 
@@ -73,30 +73,16 @@ class maxHeap{
 
 }
 
-// const maximumHeap = new maxHeap()
+const maximumHeap = new maxHeap()
 
-// maximumHeap.insert(34)
-// maximumHeap.insert(44)
-// maximumHeap.insert(54)
-// maximumHeap.insert(64)
-// maximumHeap.insert(94)
+maximumHeap.insert(34)
+maximumHeap.insert(44)
+maximumHeap.insert(54)
+maximumHeap.insert(64)
+maximumHeap.insert(94)
 
-// console.log(maximumHeap.getMax()," is maximum");
-// console.log(maximumHeap.remove()," removed");
-// console.log(maximumHeap.getMax()," is maximum");
-// maximumHeap.print()
+console.log(maximumHeap.getMax()," is maximum");
+console.log(maximumHeap.remove()," removed");
+console.log(maximumHeap.getMax()," is maximum");
+maximumHeap.print()
 
-function heapSort(array) {
-    const maxiHeap = new maxHeap(array)
-    let arr = []
-    for(let i = 0 ; i < array.length ; i++){
-        maxiHeap.insert(array[i])
-        arr = maxiHeap.remove()
-    }
-    return arr
-    
-}
-
-const array = [3,5,7,89,2,45]
-
-console.log(heapSort(array));

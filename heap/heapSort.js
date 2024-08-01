@@ -43,18 +43,4 @@ class MaxHeap{
 
 
 
-    function heapSort(array) {
-        const maxHeap = new MaxHeap(array)
-        let arr = []
-        for(let i = 0 ; i < array.length ; i++){
-            maxHeap.insert(array[i])
-            arr = maxHeap.extractMax()
-        }
-        return arr
-        
-    }
-
-    const array = [3,5,7,89,2,45]
-
-    console.log(heapSort(array));
 
