@@ -83,4 +83,13 @@ class Trie{
         return words.length > 0 ? words : `${prefix} : no suggestions found`
         }
 
+    suggest(word , max=3){
+        let suggestions = this.autoComplete(word)
+        if(Array.isArray(suggestions)){
+            let maxSuggest = suggestions.slice(0,max)
+            return maxSuggest.join(", ")
+        }else{
+            return suggestions
+        }
+    }
 }
