@@ -18,7 +18,7 @@ class Trie{
             }
             node = node.children[char] //move to the next node(or char)
         }
-        node.isEndOfTheWord = false //mark the end of word
+        node.isEndOfTheWord = true //mark the end of word
     }
 
     search(word){
@@ -39,12 +39,12 @@ class Trie{
             if(node.isEndOfTheWord){
                 words.push(prefix)
             }
-            for(let char of node.children){
+            for(let char in node.children){
                 traverse(node.children[char] , prefix + char)
             }
         }
         traverse(this.root , "")
-        console.log(words);
+        return words
     }
 
     startsWith(word){
@@ -58,15 +58,15 @@ class Trie{
         return true
     }
 
-    autoComplete(word){
+    autoComplete(prefix){
         let node = this.root
-        for(let char of word){
+        for(let char of prefix){
             if(!node.children[char]){
                 return `${word} : no suggestions found`
             }
             node = node.children[char]
         }
-        return this.printWordWithPrefix(node, word)
+        return this.printWordWithPrefix(node, prefix)
     }
 
     printWordWithPrefix(node , prefix){
@@ -83,13 +83,26 @@ class Trie{
         return words.length > 0 ? words : `${prefix} : no suggestions found`
         }
 
-    suggest(word , max=3){
-        let suggestions = this.autoComplete(word)
-        if(Array.isArray(suggestions)){
-            let maxSuggest = suggestions.slice(0,max)
-            return maxSuggest.join(", ")
-        }else{
-            return suggestions
+
+    suggest(prefix, max) {
+        let suggestions = this.autoComplete(prefix);
+        if (Array.isArray(suggestions)) {
+            let maxSuggest = suggestions.slice(0, max);
+            return maxSuggest.join(", ");
+        } else {
+            return suggestions;
         }
     }
+    
 }
+
+const trii = new Trie()
+
+trii.insert("abin")
+trii.insert("abinaya")
+trii.insert("abinayam")
+trii.insert("abinav")
+trii.insert("abina")
+console.log(trii.suggest("abina" , 4));
+console.log(trii.autoComplete("ab"));
+console.log(trii());
