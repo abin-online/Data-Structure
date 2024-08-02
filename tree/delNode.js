@@ -78,7 +78,7 @@ class BinarySearchTree {
         }
     }
 
-    levelOrder(root) {
+    levelOrder() {
         const queue = []
         queue.push(this.root)
         while (queue.length) {
@@ -91,7 +91,7 @@ class BinarySearchTree {
                 queue.push(curr.right)
             }
         }
-    }
+    }  
 
     max(root) {
         if (!root.right) {
