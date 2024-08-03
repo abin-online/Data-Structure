@@ -6,7 +6,7 @@ class TrieNode{
 }
 
 class Trie{
-    constructor() {
+    constructor() { 
         this.root = new TrieNode()
     }
 
@@ -21,6 +21,7 @@ class Trie{
         node.isEndOfTheWord = true //mark the end of word
     }
 
+    
     search(word){
         let node = this.root
         for(let char of word){
@@ -47,22 +48,23 @@ class Trie{
         return words
     }
 
+
+
     startsWith(word){
         let node = this.root
         for(let char of word){
             if(!node.children[char]){
                 return false
             }
-            node = node.children[char]
+            node = node.children
         }
-        return true
     }
 
     autoComplete(prefix){
         let node = this.root
         for(let char of prefix){
             if(!node.children[char]){
-                return `${word} : no suggestions found`
+                return `${prefix} : no suggestions found`
             }
             node = node.children[char]
         }
@@ -103,6 +105,7 @@ trii.insert("abinaya")
 trii.insert("abinayam")
 trii.insert("abinav")
 trii.insert("abina")
+console.log("auto complete" , trii.autoComplete("abina"));
 console.log(trii.suggest("abina" , 4));
 console.log(trii.autoComplete("ab"));
-console.log(trii());
+// console.log(trii());

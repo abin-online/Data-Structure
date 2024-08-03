@@ -42,6 +42,7 @@ class Graph{
             for(let adjVertex of this.adjacencyList[vertex]){
                 this.removeEdge(vertex , adjVertex)
             }
+            delete this.adjacencyList[vertex]
         }
     }
 
