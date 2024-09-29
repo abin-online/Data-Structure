@@ -57,19 +57,29 @@ function merge(left, right) {
 
 console.log(mergeSort(arr));
 
-function quickSort(arr){
-    let pivot = arr[arr.length - 1]
-    let left = []
-    let right = []
-    for(let  i = 0; i< arr.length -1 ; i++){
-        if(arr[i] < pivot){
-            left.push(arr[i])
-        }else{
-            right.push(arr[i])
+function quickSort(arr) {
+    if (arr.length <= 1) { // Base case: if array is of length 1 or 0, it's already sorted
+        return arr;
+    }
+
+    let pivot = arr[arr.length - 1]; // Choose the last element as the pivot
+    let left = [];
+    let right = [];
+
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] < pivot) {
+            left.push(arr[i]); // Elements smaller than pivot go to the left array
+        } else {
+            right.push(arr[i]); // Elements greater than or equal to pivot go to the right array
         }
     }
-    return arr
+
+    // Recursively sort left and right arrays, and concatenate the results
+    return [...quickSort(left), pivot, ...quickSort(right)];
 }
+
+console.log(quickSort(arr));
+
 
 console.log(quickSort(arr));
 
