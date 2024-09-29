@@ -70,6 +70,5 @@ for(let i = 0 ; i < 5; i++){
     circle.enqueue(arr[i])
 }
 
-circle.dequeue()
 circle.print()
 

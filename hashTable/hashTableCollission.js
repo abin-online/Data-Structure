@@ -64,9 +64,12 @@ let table = new hashTable(5)
 
 table.set("name" , "abin")
 table.set("mane" ,23)
-// table.remove("name")
-
-console.log("getting name key =>" ,table.get("name"));
+table.set('naem' , 34)
+// console.log(table.get('name'))
 table.display()
 
+table.set('naem' , 35)
+// table.remove("name")
+
+//console.log("getting name key =>" ,table.get("name"));
 table.display()
