@@ -96,4 +96,4 @@ function merge(left , right) {
     return [...sorted , ...left , ...right]
 }
 
-console.log(mergeSort(arr))
+console.log(mergeSort(arr));
