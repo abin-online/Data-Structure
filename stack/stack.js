@@ -39,10 +39,20 @@ class stack{
 let Stack = new stack()
 
 Stack.push(20)
+
 Stack.push(30)
 Stack.push(40)
 Stack.push(50)
 Stack.pop()
+
+// function Add () {
+//     Stack.prototype.display = ()=> {
+//         return 1000
+//     }
+// }
+
+const st = new Add()
+
 console.log(Stack.peek());
 //console.log(Stack.printStack());
 
