@@ -1,101 +1,81 @@
 class TrieNode {
     constructor() {
-        this.children = {};
-        this.isEndOfTheWord = false;
+        this.children = {}
+        this.isEndOfWord = false
     }
 }
 
 class Trie {
     constructor() {
-        this.root = new TrieNode();
+        this.root = new TrieNode()
     }
 
     insert(word) {
-        let node = this.root; // start from root node
+        let node = this.root
         for (let char of word) {
             if (!node.children[char]) {
-                node.children[char] = new TrieNode(); // create a new TrieNode if the char is not present
+                node.children[char] = new TrieNode
             }
-            node = node.children[char]; // move to the next node (or char)
+            node = node.children[char]
         }
-        node.isEndOfTheWord = true; // mark the end of the word
+        node.isEndOfWord = true
     }
 
     search(word) {
-        let node = this.root;
+        let node = this.root
         for (let char of word) {
             if (!node.children[char]) {
-                return false;
+                return false
             }
-            node = node.children[char];
+            node = node.children[char]
         }
-        return node.isEndOfTheWord;
+        return node.isEndOfWord
     }
 
-    // Method to print all words in the trie
     printWords() {
-        let words = [];
+        let words = []
         const traverse = (node, prefix) => {
-            if (node.isEndOfTheWord) {
-                words.push(prefix);
+            if (node.isEndOfWord) {
+                words.push(prefix)
             }
             for (let char in node.children) {
-                traverse(node.children[char], prefix + char);
+                traverse(node.children[char], prefix + char)
             }
-        };
-        traverse(this.root, "");
-        return words;
+        }
+        traverse(this.root, '')
+        return words
     }
 
     autoComplete(prefix) {
-        let node = this.root;
+        let node = this.root
         for (let char of prefix) {
-            if (!node.children[char]) {
-                return `${prefix} : no suggestions found`; // No suggestions if prefix is not found
+            if (node.children[char]) {
+                return null
             }
-            node = node.children[char];
+            node = node.children[char]
         }
-        return this.printWordsWithPrefix(node, prefix);
+        return this.printWordsWithPrefix(prefix , node)
     }
 
-    printWordsWithPrefix(node, prefix) {
-        let words = [];
-        const traverse = (node, currentPrefix) => {
-            if (node.isEndOfTheWord) {
-                words.push(currentPrefix);
+    printWordsWithPrefix(prefix , node){
+        let words = []
+        const traverse = (node, currentPrefix)=> {
+            if(node.isEndOfWord) {
+                words.push(currentPrefix)
             }
-            for (let char in node.children) {
-                traverse(node.children[char], currentPrefix + char);
+            for(let char in node.children) {
+                traverse(node.children[char] , currentPrefix + char)
             }
-        };
-        traverse(node, prefix);
-        return words.length > 0 ? words : `${prefix} : no suggestions found`;
+        }
     }
 
-    suggest(prefix, max) {
-        let suggestions = this.autoComplete(prefix);
-        if (Array.isArray(suggestions)) {
-            let maxSuggest = suggestions.slice(0, max);
-            return maxSuggest.join(", ");
-        } else {
-            return suggestions;
+    suggest(prefix , max) {
+        let suggestions = this.autoComplete(prefix)
+        if(Array.isArray(suggestions)) {
+            let maxSuggest = suggestions.slice(0,max)
+            return maxSuggest.join(' ')
+        }else{
+            return suggestions
         }
     }
 }
-
-// Example usage
-const trii = new Trie();
-
-trii.insert("abin");
-trii.insert("abinaya");
-trii.insert("abinayam");
-trii.insert("abinav");
-trii.insert("abina");
-
-console.log("Auto complete:", trii.autoComplete("abina"));
-console.log("Suggestions:", trii.suggest("abina", 4));
-console.log("Auto complete:", trii.autoComplete("ab"));
-console.log("Words in Trie:", trii.printWords());
-
-
-//This is enough for understanding trie

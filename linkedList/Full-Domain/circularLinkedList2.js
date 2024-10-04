@@ -8,6 +8,7 @@ class Node{
 class circularLinkedList{
     constructor(){
         this.head = null
+        this.next = null
         this.size = 0
     }
 
@@ -15,18 +16,18 @@ class circularLinkedList{
         return this.size
     }
 
-    isEmpty() {
+    isEmpty(){
         return this.size === 0
     }
 
-    prepend(value) {
+    prepend(value){
         const node = new Node(value)
         if(this.isEmpty()){
             this.head = node
             node.next = this.head
-        }else {
+        }else{
             let prev = this.head
-            while(prev.next !== this.head) {
+            while(prev.next !== this.head){
                 prev = prev.next
             }
             node.next = this.head
@@ -35,15 +36,15 @@ class circularLinkedList{
         }
         this.size++
     }
-    
-    append(value) {
+
+    append(value){
         const node = new Node(value)
-        if(this.isEmpty()) {
+        if(this.isEmpty()){
             this.head = node
             node.next = this.head
         }else{
             let prev = this.head
-            while(prev.next !== this.head) {
+            while(prev.next !== this.head){
                 prev = prev.next
             }
             prev.next = node
@@ -52,24 +53,14 @@ class circularLinkedList{
         this.size++
     }
 
-    print() {
-        let listed = ''
-        let result = []
+    print(){
         let curr = this.head
+        let result = ''
         do{
-            result.push(curr.value)
+            result += `${curr.value} `
             curr = curr.next
         }while(curr !== this.head)
         console.log(result)
     }
 }
 
-const cList = new circularLinkedList()
-
-cList.append(33)
-cList.append(35)
-cList.append(36)
-cList.append(37)
-cList.prepend(78)
-
-cList.print()
