@@ -110,7 +110,7 @@ class Tree {
         this.deleteNode(this.root, value)
     }
 
-    deleteNode(root, node) {
+    deleteNode(root, value) {
         if (root === null) {
             return root
         }
