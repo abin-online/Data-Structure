@@ -192,3 +192,4 @@ bst.levelOrder()
 console.log(`${bst.findClosest(6)} is closest to 6`);
 
 console.log(`Is a BST ? ${bst.isBST()}`);
+console.log(bst.findClosest(50));

@@ -1,3 +1,7 @@
+//practice each sort in different files, bcz  there's an issue with reusing the same array across
+//  multiple sorting functions. Once one of the sorting functions mutates arr, 
+//  it affects the input for the subsequent algorithms
+
 let arr = [5, 3, -4, 2, 9, -8]
 
 function bubbleSort(arr) {
