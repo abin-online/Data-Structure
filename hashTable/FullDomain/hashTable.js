@@ -10,7 +10,7 @@ class hashTable{
             hashed += key.charCodeAt(i)
         }
         return hashed
-    }
+    }  
 
     set(key , value) {
         const index = this.hash(key)
