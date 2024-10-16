@@ -56,56 +56,101 @@ class LinkedList {
     }
 
     reverse(){
-        let curr = this.head;
+        let curr = this.head
         let prev = null
         let next
-        while(curr) {
+        while(curr){
             next = curr.next
-            curr.next = prev;
-            prev = curr;
-            curr = next;
+            curr.next = prev
+            prev = curr
+            curr = next
         }
-        this.head = prev
+        this.head = prev 
     }
 
-    insert(value , index) {
-        if(index < 0 || index >= this.size){
-            console.log('Cannot insert')
+    // insert(value , index) {
+    //     if(index < 0 || index >= this.size){
+    //         console.log('Cannot insert')
+    //         return
+    //     }
+    //     let node = new Node(value)
+
+    //     if(index == 0) {
+    //         this.prepend(value)
+    //     }else{
+    //         let prev = this.head;
+    //         for(let i = 0 ; i < index - 1 ; i++){
+    //             prev = prev.next;
+    //         }
+    //         node.next = prev.next;
+    //         prev.next = node
+    //         this.size++
+    //     }
+    // }
+
+    insert(value , index){
+        if(index < 0 || index > this.size){
+            return 
+        }
+        if(index === 0){
+            this.prepend(value)
             return
         }
-        let node = new Node(value)
-
-        if(index == 0) {
-            this.prepend(value)
-        }else{
-            let prev = this.head;
-            for(let i = 0 ; i < index - 1 ; i++){
-                prev = prev.next;
-            }
-            node.next = prev.next;
-            prev.next = node
-            this.size++
+        if(index === this.size){
+            this.append(value)
+            return
         }
+        const node = new Node(value)
+        let prev = this.head
+        for(let i = 0 ; i < index - 1 ; i++){
+            prev = curr.next
+        }
+        node.next = prev.next;
+        prev.next = node
+        this.size++
     }
 
-    removeValue(value) {
+    // removeValue(value) {
+    //     if(this.isEmpty()){
+    //         return null
+    //     }
+    //     if(this.head.value == value){
+    //         this.head = this.head.next
+    //         this.size--
+    //     }else{
+    //         let prev = this.head ;
+    //         while(prev.next && prev.next.value !== value) {
+    //             prev = prev.next
+    //         }
+    //         if(prev.next){
+    //             let removeNode = prev.next;
+    //             prev.next = removeNode.next;
+    //             this.size--
+    //         }
+    //     }
+    // }
+
+    remove(value){
         if(this.isEmpty()){
             return null
         }
-        if(this.head.value == value){
+        if(this.head.value === value){
             this.head = this.head.next
             this.size--
-        }else{
-            let prev = this.head ;
-            while(prev.next && prev.next.value !== value) {
-                prev = prev.next
-            }
-            if(prev.next){
-                let removeNode = prev.next;
-                prev.next = removeNode.next;
-                this.size--
-            }
+            return
         }
+        let prev = this.head;
+        while(prev.next && prev.next.value !== value){
+            prev = prev.next
+        }
+        if(prev.next){
+            let removenode = prev.next
+            prev.next = removenode.next
+            this.size--
+        }else{
+            console.log('Value not found')
+        }
+        
     }
 
     removeIndex(index) {
