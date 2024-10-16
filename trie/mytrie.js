@@ -1,85 +1,84 @@
-class TrieNode{
-    constructor(){
-        this.children = {}
-        this.isEndOFWord = false
+class TrieNode {
+    constructor() {
+        this.children = {};
+        this.isEndOfWord = false; // Fixed typo: should be isEndOfWord
     }
 }
 
-class Trie{
-     constructor(){
-        this.root = new TrieNode()
-     }
-
-    insert(word){
-        let node = this.root
-        for (const char in word) {
-           if(!node.children[char]){
-            node.children[char] = new TrieNode()
-           }
-           node = node.children[char]
-        }
-        node.isEndOFWord = true
+class Trie {
+    constructor() {
+        this.root = new TrieNode();
     }
 
-    search(word){
-        let node = this.root
-        for(const char of word){
-            if(!node.children[char]){
-                return false
+    insert(word) {
+        let node = this.root;
+        for (const char of word) { // Changed from for...in to for...of
+            if (!node.children[char]) {
+                node.children[char] = new TrieNode();
             }
-            node = node.children[char]
+            node = node.children[char];
         }
-        return node.isEndOFWord
+        node.isEndOfWord = true;
     }
 
-    printWords(){
-        let words = []
-        const traverse = (node ,prefix )=>{
-            if(node.isEndOFWord){
-                words.push(prefix)
+    search(word) {
+        let node = this.root;
+        for (const char of word) {
+            if (!node.children[char]) {
+                return false;
             }
-            for(let char of node.children){
-                traverse(node.children[char] , prefix+char)
-            }
+            node = node.children[char];
         }
-        traverse(this.root , "")
-        return words
+        return node.isEndOfWord;
     }
 
-    startWith(word){
-        let node = this.root
-        for(let char of word){
-            if(!node.children[char]){
-                return false
+    printWords() {
+        let words = [];
+        const traverse = (node, prefix) => {
+            if (node.isEndOfWord) {
+                words.push(prefix);
             }
-            node = node.children[char]
-        }
+            for (let char in node.children) { // Changed to for...in
+                traverse(node.children[char], prefix + char);
+            }
+        };
+        traverse(this.root, "");
+        return words;
     }
 
-    autoComplete(prefix){
- 
-        let node = this.root
-        for(const char of prefix){
-            if(!node.children[char]){
-                return "no suggestions"
+    startsWith(prefix) { // Renamed for clarity
+        let node = this.root;
+        for (const char of prefix) {
+            if (!node.children[char]) {
+                return false;
             }
-            node = node.children[char]
+            node = node.children[char];
         }
-        return this.printWordsWithPrefix(node, prefix)
-
+        return true;
     }
 
-    printWordsWithPrefix( node , prefix){
-        let words = []
-        const traverse = (node , currentPrefix)=>{
-            if(node.isEndOFWord){
-                words.push(prefix)
+    autoComplete(prefix) {
+        let node = this.root;
+        for (const char of prefix) {
+            if (!node.children[char]) {
+                return "no suggestions";
             }
-            for(let char of node.children){
-                traverse(node.children[char], currentPrefix + char)
-            }
+            node = node.children[char];
         }
-        traverse(node, prefix)
-        return words
+        return this.printWordsWithPrefix(node, prefix);
+    }
+
+    printWordsWithPrefix(node, prefix) {
+        let words = [];
+        const traverse = (node, currentPrefix) => {
+            if (node.isEndOfWord) {
+                words.push(currentPrefix); // Fixed to use currentPrefix
+            }
+            for (let char in node.children) { // Changed to for...in
+                traverse(node.children[char], currentPrefix + char);
+            }
+        };
+        traverse(node, prefix);
+        return words;
     }
 }
