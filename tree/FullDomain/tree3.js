@@ -88,7 +88,7 @@ class Tree{
         }
     }
 
-    delete(){
+    delete(value){
         this.root = this.deleteNode(this.root , value)
     }
 

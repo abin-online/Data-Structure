@@ -57,3 +57,4 @@ circle.enqueue(45)
 circle.enqueue(55)
 
 circle.print()
+console.log(circle)
