@@ -40,6 +40,7 @@ const table = new hashTable(50)
 
 
 table.set("name" , "abin")
+table.set("mane" , "anand")
 table.set("age" , 25)
 
 //table.display()
