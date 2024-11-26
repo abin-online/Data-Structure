@@ -1,5 +1,3 @@
-
-
 function flatArray(arr){
 
     const baseCase = (arr)=> {
@@ -27,6 +25,6 @@ function flatArray(arr){
     return flatArray(result)
 }
 
-let arr = [2,4,5,[4,5],[4,[44, 5]]];
+let arr = [2,4,5,[4,[9,[9,[0,4],],],5],[4,[44, 5]]];
 
 console.log(flatArray(arr))
